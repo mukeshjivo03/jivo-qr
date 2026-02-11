@@ -4,6 +4,7 @@ import { useState, useEffect } from 'react'
 import './App.css'
 
 
+const BASE_URL = 'https://script.google.com/macros/s/AKfycbwTirK4ibxqMFk4zdz4oyN2rzClerzfCcTDEqZxS0rxVAYhuFPlSr3iKJhaOWvZF5k4/exec'
 const initialForm = { full_name: '', phone: '', email: '', address: '' }
 function App() {
   const [form, setForm] = useState(initialForm)
@@ -50,23 +51,18 @@ function App() {
     return;
   }
   setLoading(true);
+      console.log(form)
   
-  try {
-    // const res = await fetch(`${BASE_URL}/register/`, {
-    //   method: 'POST',
-    //   headers: { 'Content-Type': 'application/json' },
-    //   body: JSON.stringify({ ...form, device_id: deviceId }),
-    // });
-
-    // const data = await res.json();
-
-    // if (!res.ok) {
-    //   const errorMessage = data.detail || 'Request failed';
-    //   throw new Error(errorMessage);
-    // }
-    setSubmitted(true);
-    console.log('Form submitted successfully');
-  } catch (err) {
+try {
+      const response = await fetch(`${BASE_URL}`, {
+        method: 'POST',
+        mode: 'no-cors', // Critical for Google Scripts
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(form),
+      });
+      alert("Data sent!");
+      setSubmitted(true)
+    } catch (err) {
       setErrors('Something went wrong. Please try again.');
       console.error(err);
   } finally {
