@@ -60,7 +60,6 @@ try {
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(form),
       });
-      alert("Data sent!");
       setSubmitted(true)
     } catch (err) {
       setErrors('Something went wrong. Please try again.');
@@ -187,7 +186,7 @@ try {
             {errors.submit && <p className="submit-error">{errors.submit}</p>}
 
             <button type="submit" className="submit-btn" disabled={loading}>
-              {loading ? 'Submitting...' : 'Submit & Claim Coupon'}
+              {loading ? 'Submitting...' : 'Submit & Participate'}
             </button>
           </form>
 
