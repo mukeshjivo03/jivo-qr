@@ -119,7 +119,7 @@ try {
 
         <div className="form-body">
           <div className="form-title-section">
-            <h2 className="form-title">Customer Details</h2>
+            <h2 className="form-title">Participant Details</h2>
             <p className="form-subtitle">Fill in your details to participate in the activity</p>
           </div>
 
