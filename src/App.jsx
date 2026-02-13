@@ -31,12 +31,11 @@ function App() {
     } else if (!/^\d{10}$/.test(form.phone.trim())) {
       newErrors.phone = 'Enter a valid 10-digit phone number'
     }
-    if (!form.email.trim()) {
-      newErrors.email = 'Email is required'
-    } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(form.email.trim())) {
+    if (form.email.trim()) {
+      if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(form.email.trim())) {
       newErrors.email = 'Enter a valid email address'
-    }
-    if (!form.address.trim()) newErrors.address = 'Address is required'
+      }
+    }  
     return newErrors
   }
 
@@ -156,7 +155,7 @@ try {
 
             <div className="form-group">
               <label htmlFor="email">
-                Email Address <span className="required">*</span>
+                Email Address 
               </label>
               <input
                 id="email"
@@ -171,7 +170,7 @@ try {
 
             <div className="form-group">
               <label htmlFor="address">
-                Address <span className="required">*</span>
+                Address 
               </label>
               <textarea
                 id="address"
@@ -180,7 +179,6 @@ try {
                 value={form.address}
                 onChange={handleChange}
               />
-              {errors.address && <span className="error-text">{errors.address}</span>}
             </div>
 
             {errors.submit && <p className="submit-error">{errors.submit}</p>}
